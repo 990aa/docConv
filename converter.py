@@ -58,8 +58,10 @@ class MarkdownToDocxConverter:
             input_path = Path(input_file)
             output_file = str(input_path.with_suffix('.docx'))
         
-        # Build pandoc arguments
+        # Build pandoc arguments with proper math support
         extra_args = [
+            # Enable LaTeX math recognition with \( \) and \[ \] delimiters
+            '--from=markdown+tex_math_single_backslash',
             f'--highlight-style={highlight_style}',
         ]
         
@@ -69,9 +71,14 @@ class MarkdownToDocxConverter:
         
         # Add any additional arguments
         for key, value in kwargs.items():
-            extra_args.append(f'--{key}={value}')
+            if isinstance(value, bool):
+                if value:
+                    extra_args.append(f'--{key}')
+            else:
+                extra_args.append(f'--{key}={value}')
         
         print(f"📄 Converting {input_file} → {output_file}")
+        print(f"   Math support: ENABLED (\\(...\\) and \\[...\\])")
         print(f"   Highlight style: {highlight_style}")
         
         try:

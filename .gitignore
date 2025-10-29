@@ -13,3 +13,4 @@ bin/pandoc*
 bin/pandoc.exe
 *.docx
 output/
+*.msi
