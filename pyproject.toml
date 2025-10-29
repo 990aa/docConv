@@ -1,9 +1,11 @@
 [project]
 name = "docconv"
 version = "0.1.0"
-description = "Add your description here"
+description = "md to docx converter"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
     "pypandoc>=1.15",
 ]
+
+license = "MIT"
