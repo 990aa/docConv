@@ -14,5 +14,6 @@ bin/pandoc.exe
 *.docx
 output/
 *.msi
+.ruff_cache/
 
 input/
